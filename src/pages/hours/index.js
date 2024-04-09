@@ -1,7 +1,7 @@
 import { View, Text, Image, TouchableOpacity, Modal } from "react-native"
 
-export function Home(){
+export function Hours(){
     return(
-        <View></View>
+        <View style={{ backgroundColor: 'blue', height: '100%', width: '100%'}}></View>
     )
 }

@@ -4,9 +4,10 @@ import { Ionicons } from "@expo/vector-icons"
 import { Home } from "./pages/home"
 import { Hours } from "./pages/hours"
 
-const Tab = createBottomTabNavigator()
+const  Tab = createBottomTabNavigator()
 
 export function Routes(){
+    return(
     <Tab.Navigator>
         <Tab.Screen
             name='Home'
@@ -31,12 +32,13 @@ export function Routes(){
                 headerShown: false,
                 tabBarIcon: ({ foused, size, color}) => {
                     if(foused){
-                        return <Ionicons size={size} color={color} name="home"/>
+                        return <Ionicons size={size} color={color} name="library"/>
                     }
-                    return <Ionicons size={size} color={color} name="home-outline"/>
+                    return <Ionicons size={size} color={color} name="library-outline"/>
                 }
             }}
         />
         
     </Tab.Navigator>
+    )
 }
