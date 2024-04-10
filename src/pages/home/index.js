@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, ScrollView, Modal } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, ScrollView, Modal, Alert } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import styles from './style'
+import { ModalExtraHours } from '../../components/modal';
 
 export function Home() {
 
@@ -24,6 +25,42 @@ export function Home() {
 
   const [modalVisible, setModalVisible] = useState(false)
 
+  const saveExtraHours = () => {
+    try {
+      if (!extraHours.day || !extraHours.month || !extraHours.year) {
+        Alert.alert('Preencha todos os campos de data');
+        return;
+      }
+
+      if (!extraHours.hourStart || !extraHours.hourExit) {
+        Alert.alert('Preencha todos os campos de horário');
+        return;
+      }
+
+      if (!extraHours.local) {
+        Alert.alert('Preencha o campo de local');
+        return;
+      }
+
+      setModalVisible(true); // Abre o modal após validar os campos
+
+    } catch (error) {
+      console.log('Erro ao salvar', error);
+    }
+  };
+
+
+
+  const clearFields = () => {
+    setExtraHours({
+      day: '',
+      month: '',
+      year: '',
+      hourStart: '',
+      hourExit: '',
+      local: ''
+    });
+  };
 
   return (
     <SafeAreaView style={{ backgroundColor: '#6F6F6F', height: '100%', width: '100%' }}>
@@ -96,17 +133,18 @@ export function Home() {
 
       <View style={{ width: '100%', height: 5, backgroundColor: '#D9D9D9', marginTop: 20 }}></View>
 
-      <TouchableOpacity style={styles.botao_adicionar}>
+      <TouchableOpacity style={styles.botao_adicionar} onPress={saveExtraHours}>
         <Text style={{ fontSize: 20, color: '#FFFFFF', marginTop: 10, fontWeight: 'normal' }}>Lançar Hora Extra</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity style={styles.botao_limpar_campos}>
+      <TouchableOpacity style={styles.botao_limpar_campos} onPress={clearFields}>
         <Text style={{ fontSize: 20, color: '#000000', marginTop: 7, fontWeight: 'bold' }}>Limpar Campos</Text>
       </TouchableOpacity>
 
-      <Modal>
-        
+      <Modal visible={modalVisible} animationType='fade' transparent={true}>
+        <ModalExtraHours extraHours={extraHours} handleClose={ () => setModalVisible(false)}></ModalExtraHours>
       </Modal>
+      
     </ScrollView>
     </SafeAreaView>
 

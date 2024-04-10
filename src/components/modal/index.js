@@ -1,5 +1,5 @@
 import { View, Text, StyleSheet, TouchableOpacity, Pressable } from "react-native";
-import * as Clipboard from "expo-clipboard";
+//import * as Clipboard from "expo-clipboard";
 import useStorage from "../../hooks/useStorage";
 import styles from "./style";
 
@@ -10,22 +10,30 @@ export function ModalExtraHours({ extraHours, handleClose }) {
         //await Clipboard.setStringAsync(extraHours) - copiar
         await saveItem("@extra", extraHours)
         alert("Hora extra salva")
+        console.log('horas salvas', extraHours)
         handleClose();
     }
+
+    async function handleCancelSaveExtraHours() {
+        alert("As horas não foram salvas")
+        handleClose()
+    }
+
 
     return (
         <View style={styles.container}>
             <View style={styles.content}>
-                <Text style={styles.title}>Confirmar Horas Extras?</Text>
+                <Text style={styles.title}>Salvar Horas Extras?</Text>
 
                 <View style={styles.buttonArea}>
 
-                    <TouchableOpacity style={styles.bottonNo} onPress={handleClose}>
-                        <Text style={styles.buttonTextNo}>Não</Text>
-                    </TouchableOpacity>
-
                     <TouchableOpacity style={styles.bottonYes} onPress={handleCopyExtraHours}>
                         <Text style={styles.buttonTextYes}>Sim</Text>
+                    </TouchableOpacity>
+
+                    <TouchableOpacity style={styles.bottonNo} onPress={handleCancelSaveExtraHours}>
+                        <Text style={styles.buttonTextNo}>Não</Text>
+                        
                     </TouchableOpacity>
 
                 </View>

@@ -5,7 +5,7 @@ export default styles = StyleSheet.create({
         backgroundColor: 'rgba(24, 24, 24, 0.6)',
         flex: 1,
         alignItems: "center",
-        justifyContent: "center"
+        justifyContent: "center",
     },
 
     content:{
@@ -15,7 +15,9 @@ export default styles = StyleSheet.create({
         paddingBottom: 24,
         alignItems: "center",
         justifyContent: "center",
-        borderRadius: 8
+        borderRadius: 8,
+        borderWidth: 2,
+        borderColor: "#000000"
     },
 
     title:{
@@ -34,33 +36,38 @@ export default styles = StyleSheet.create({
     },
 
     bottonNo:{
-        flex: 1,
-        alignItems: "center",
-        marginTop: 14,
-        marginBottom: 14,
-        padding: 8,
+        height: 45,
+        width: 120,
         backgroundColor: "#FFFFFF",
         borderWidth: 1,
-        borderBottomColor: "#000000"
+        borderBottomColor: "#000000",
+        alignItems: 'center',
+        marginTop: -15,
+        borderRadius: 20
     },
 
     bottonYes: {
-        flex: 1,
-        alignItems: "center",
-        marginTop: 14,
-        marginBottom: 14,
-        padding: 8,
-        backgroundColor: "#000000"
+        height: 45,
+        width: 120,
+        backgroundColor: "#FFFFFF",
+        marginTop: -15,
+        backgroundColor: "#000000",
+        alignItems: 'center',
+        borderRadius: 20
     },
 
     buttonTextYes:{
+        fontSize: 20,
         color: "#FFFFFF",
-        fontWeight: "bold"
+        fontWeight: "bold",
+        marginTop: 7
     },
 
     buttonTextNo:{
+        fontSize: 20,
         color: "#000000",
-        fontWeight: "bold"
+        fontWeight: "bold",
+        marginTop: 7
     },
 
 })
