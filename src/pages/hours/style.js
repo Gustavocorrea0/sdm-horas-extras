@@ -5,6 +5,8 @@ export default styles = StyleSheet.create({
         backgroundColor: '#6F6F6F',
         height: '100%',
         width: '100%',
+        alignContent: 'center',
+        alignItems: 'center'
     },
 
     top_bar: {
@@ -22,10 +24,10 @@ export default styles = StyleSheet.create({
     },
 
     text_title_hours: {
-        fontSize: 20,
+        fontSize: 24,
         fontWeight: 'bold',
         color: '#FFFFFF',
-        marginLeft: 130,
+        marginLeft: 0,
         marginTop: 20
     },
 
@@ -34,5 +36,5 @@ export default styles = StyleSheet.create({
         paddingLeft: 14,
         paddingRight: 14,
     }
-    
+
 })
