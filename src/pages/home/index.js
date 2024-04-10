@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, ScrollView } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, ScrollView, Modal } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import styles from './style'
@@ -21,6 +21,8 @@ export function Home() {
       [field]: value
     }));
   };
+
+  const [modalVisible, setModalVisible] = useState(false)
 
 
   return (
@@ -102,7 +104,9 @@ export function Home() {
         <Text style={{ fontSize: 20, color: '#000000', marginTop: 7, fontWeight: 'bold' }}>Limpar Campos</Text>
       </TouchableOpacity>
 
-      <View style={{ width: '100%', height: 50 }}></View>
+      <Modal>
+        
+      </Modal>
     </ScrollView>
     </SafeAreaView>
 
