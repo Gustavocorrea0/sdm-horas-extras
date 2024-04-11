@@ -7,13 +7,19 @@ import { ModalExtraHours } from '../../components/modal';
 
 export function Home() {
 
+  function generateId() {
+    const randomValue = Math.floor(Math.random() * 10000); // Valor aleatório entre 0 e 999
+    return `${randomValue}`;
+  }
+
   const [extraHours, setExtraHours] = useState({
     day: '',
     month: '',
     year: '',
     hourStart: '',
     hourExit: '',
-    local: ''
+    local: '',
+    id: generateId()
   })
 
   const updateExtraHours = (field, value) => {

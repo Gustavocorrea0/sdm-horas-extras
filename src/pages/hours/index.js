@@ -9,7 +9,7 @@ import { useIsFocused } from "@react-navigation/native"
 import useStorage from "../../hooks/useStorage"
 
 export function Hours() {
-    const [listExtraHours, setListExtraHours] = useState([])
+    const [listExtraHours, setListExtraHours] = useState([]);
     const focused = useIsFocused();
     const { getItem, removeItem } = useStorage();
 
@@ -18,13 +18,12 @@ export function Hours() {
             const extraHours = await getItem('@extra');
             setListExtraHours(extraHours);
         }
-
         loadExtraHours();
     }, [focused]);
 
-    async function handleDeleteExtraHours(item) {
-        const extraHours = await removeItem("@extra", item);
-        setListExtraHours(extraHours);
+    async function handleDeleteExtraHours(item) { 
+        const updateExtraHours = await removeItem("@extra", item);
+        setListExtraHours(updateExtraHours);
     }
 
     return (
@@ -39,10 +38,16 @@ export function Hours() {
                 <FlatList
                     style={{ flex: 1, padding: 14 }}
                     data={listExtraHours}
-                    keyExtractor={(item) => String(item)}
-                    renderItem={({ item }) => <ExtraHoursItem data={item} removeExtraHours={() => handleDeleteExtraHours(item)} />}
+                    keyExtractor={(item) => item.id}
+                    //renderItem={({ item, index }) => <ExtraHoursItem data={item} removeExtraHours={ () => handleDeleteExtraHours(item)}/>}
+
+                    renderItem={({ item, index }) => {
+                        console.log(`Key do item ${index}: ${item.id}`);
+                        return <ExtraHoursItem data={item} removeExtraHours={() => handleDeleteExtraHours(item)} />;
+                    }}
                 />
             </View>
+
         </SafeAreaView>
 
     )

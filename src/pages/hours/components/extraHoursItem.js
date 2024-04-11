@@ -1,26 +1,23 @@
 import React from "react";
-import { View, Text, StyleSheet, Pressable, Image } from "react-native";
+import { View, Text, StyleSheet, Pressable, Image, TouchableOpacity } from "react-native";
 
-export function ExtraHoursItem({ data, removeExtraHours }) {
-    const { day, month, year, hourStart, hourExit, local } = data;
+export function ExtraHoursItem( { data, removeExtraHour } ) {
+    const { day, month, year, hourStart, hourExit, local, id } = data;
 
     return (
-        <View style={styles.container}>
-
-            <Pressable onPress={removeExtraHours} style={styles.removeHours}>
-                <Text style={styles.xToRemove}>X</Text>
-            </Pressable>
+        <Pressable onLongPress={ () => removeExtraHour} style={styles.container}>
 
             <Text style={styles.textData}>{`Data: ${day}/${month}/${year}`}</Text>
 
-            <Text style={styles.text}>{`Entrada: ${hourStart}`}</Text>
+            <Text style={styles.text}>"Entrada:"{`${hourStart}`}</Text>
 
             <Text style={styles.text}>{`Saida: ${hourExit}`}</Text>
 
             <Text style={styles.text}>{`Local: ${local}`}</Text>
-            
-        </View>
+
+        </Pressable>
     );
+
 }
 
 const styles = StyleSheet.create({
@@ -41,7 +38,7 @@ const styles = StyleSheet.create({
         color: "#000000",
         fontWeight: 'bold',
         fontSize: 18,
-        marginTop: -22,
+        marginTop: 6,
         marginLeft: 25
     },
 
@@ -53,9 +50,9 @@ const styles = StyleSheet.create({
     },
 
     removeHours: {
-        width: 20,
-        height: 20,
-        marginLeft: 280,
+        width: 45,
+        height: 45,
+        marginLeft: 260,
         marginTop: 10,
         borderWidth: 2,
         alignItems: 'center',
@@ -64,7 +61,7 @@ const styles = StyleSheet.create({
 
     xToRemove: {
         fontSize: 16,
-        marginTop: -4,
+        marginTop: 1,
         fontWeight: 'bold',
         color: 'white'
     }

@@ -25,11 +25,12 @@ const useStorage = () => {
         try {
             let extraHours = await getItem(key);
             let myExtraHours = extraHours.filter( (extraHours) => {
-                return (extraHours !== item);
+                return (extraHours !== item)
             });
 
             await AsyncStorage.setItem(key, JSON.stringify(myExtraHours))
             return myExtraHours
+            
         } catch (error) {
             console.log("Erro ao remover", error);
         }

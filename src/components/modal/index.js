@@ -7,7 +7,7 @@ export function ModalExtraHours({ extraHours, handleClose }) {
     const { saveItem } = useStorage();
 
     async function handleCopyExtraHours() {
-        //await Clipboard.setStringAsync(extraHours) - copiar
+        console.log('ok')
         await saveItem("@extra", extraHours)
         alert("Hora extra salva")
         console.log('horas salvas', extraHours)
@@ -27,13 +27,13 @@ export function ModalExtraHours({ extraHours, handleClose }) {
 
                 <View style={styles.buttonArea}>
 
-                    <TouchableOpacity style={styles.bottonYes} onPress={handleCopyExtraHours}>
+                    <TouchableOpacity style={styles.bottonYes} onPress={ () => handleCopyExtraHours()}>
+                        
                         <Text style={styles.buttonTextYes}>Sim</Text>
                     </TouchableOpacity>
 
                     <TouchableOpacity style={styles.bottonNo} onPress={handleCancelSaveExtraHours}>
                         <Text style={styles.buttonTextNo}>Não</Text>
-                        
                     </TouchableOpacity>
 
                 </View>
